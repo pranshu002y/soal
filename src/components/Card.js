@@ -1,10 +1,14 @@
 import React from "react";
 import { FaRegFileAlt } from "react-icons/fa";
 import { LuDownload } from "react-icons/lu";
-const Card = ({data }) => {
+import { useNavigate } from "react-router-dom";
+
+const Card = () => {
+  const navigate = useNavigate();
+
   return (
   
-      <div className="relative w-60 h-72 rounded-[40px] bg-zinc-900/90 text-white py-5 px-5 overflow-hidden">
+      <div className="relative w-60 h-72 rounded-[40px] bg0 text-white py-5 px-5 overflow-hidden z-[9]" onClick={() => navigate("/Photoview")}>
         <FaRegFileAlt />
         <div className="lorem"> 
         <p className="text-sm mt-5 font-semibold leading-tight  ">
@@ -20,7 +24,7 @@ const Card = ({data }) => {
             </span>
           </div>
           <div className="tag w-full py-4 bg-green-600 flex items-center justify-center">
-          <h3 className="text-sm font-semibold">DOWNLOAD NOW</h3>
+          <h3 className="text-sm font-semibold">OPEN NOW</h3>
           </div>
         </div>
       </div>

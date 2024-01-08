@@ -1,14 +1,20 @@
-import "./App.css";
 import React from "react";
-import Background from "./components/Background";
-import Foreground from "./components/Foreground";
-
+import "./App.css"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Homepage from "./components/Homepage";
+import Photoview from "./components/Photoview";
+import Viewjobs from "./components/Viewjobs";
 function App() {
   return (
-    <div className="w-full h-full bg-zinc-800 relative">
-      <Background />
-      <Foreground/>
-    </div>
+    <Router>
+      <Routes>
+
+        <Route path="/" element={<Homepage />} />
+        <Route path="/Photoview" element={<Photoview />} />
+        <Route path="/Viewjobs" element={<Viewjobs />} />
+
+      </Routes>
+    </Router>
   );
 }
 
