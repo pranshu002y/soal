@@ -1,18 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegFileAlt } from "react-icons/fa";
 import { LuDownload } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
-
+import axios from 'axios';
 const Card = () => {
   const navigate = useNavigate();
 
+  const [data, setData] = useState();
+
+  const getimage = async () => {
+    try {
+      const res = await axios.get('http://localhost:5500/auth/getimage/image', {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getimage();
+  }, []);
+
   return (
-  
-      <div className="relative w-60 h-72 rounded-[40px] bg0 text-white py-5 px-5 overflow-hidden z-[9]" onClick={() => navigate("/Photoview")}>
+  <>
+{data && data.map((e)=> (
+
+<div className="relative w-60 h-72 rounded-[40px] bg0 text-white py-5 px-5 overflow-hidden z-[9] card-hover" onClick={() => navigate("/Photoview")} key={e.id}>
         <FaRegFileAlt />
         <div className="lorem"> 
         <p className="text-sm mt-5 font-semibold leading-tight  ">
-          loremloremloremloremloremloremloremloremloremloremloremloremloremlorem
+          {e.company}
         </p>
         </div>
        
@@ -28,6 +50,10 @@ const Card = () => {
           </div>
         </div>
       </div>
+      
+))}
+  </>
+      
     
   );
 };

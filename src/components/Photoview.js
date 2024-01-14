@@ -1,27 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
+import Nav from "./Nav";
 
 const Photoview = () => {
+  const [data, setData] = useState();
+
+  const getimage = async () => {
+    try {
+      const res = await axios.get('http://localhost:5500/auth/getimage/image', {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getimage();
+  }, []);
+
   const handleDownload = () => {
-    // Replace the image URL with the actual URL of the image you want to download
-    const imageUrl =
-      "https://res.cloudinary.com/dpiatasuq/image/upload/v1700977041/scout/244188868_570354887420649_1669272980551569962_n_vcj6ik.jpg";
+    if (data && data.length > 0 && data[0].Image) {
+      const imageUrl = data[0].Image;
 
-    const anchor = document.createElement("a");
-    anchor.href = imageUrl;
-    anchor.download = "downloaded_image.jpg";
+      const anchor = document.createElement("a");
+      anchor.href = imageUrl;
+      anchor.download = "downloaded_image.jpg";
 
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+    } else {
+      console.error("Image data is not available");
+    }
   };
 
   return (
+    <div>
+<Nav/>
     <div className="select">
       <div className="app__videos">
         <main>
           <div className="card-2">
             <img
-              src="https://res.cloudinary.com/dpiatasuq/image/upload/v1700977041/scout/244188868_570354887420649_1669272980551569962_n_vcj6ik.jpg"
+              src={data && data.length > 0 && data[0].Image}
               alt="Card"
             />
             <div className="card-content">
@@ -31,6 +57,8 @@ const Photoview = () => {
         </main>
       </div>
     </div>
+    </div>
+    
   );
 };
 
