@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = `http://localhost:5500/auth`
+const baseURL = `https://scoutverse.onrender.com/`
 
 export const axiosGet = async (url) => {
     return await axios.get(`${baseURL}${url}`, {
