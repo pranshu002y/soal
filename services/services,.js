@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = `https://scoutverse.onrender.com/`
+const baseURL = `https://soalbackend.onrender.com`
 
 export const axiosGet = async (url) => {
     return await axios.get(`${baseURL}${url}`, {
