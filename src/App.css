@@ -8,7 +8,7 @@
 }
 
 .ani {
-  animation: fadeAnimation 2s linear 1;
+  animation: fadeAnimation 5s linear infinite;
   animation-delay: 2s;
 
 }

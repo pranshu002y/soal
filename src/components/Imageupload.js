@@ -66,7 +66,7 @@ const Imageupload = () => {
         company: data.company,
       };
 
-      const response = await axios.post("https://scoutverse.onrender.com//upload/image", def);
+      const response = await axios.post("https://scoutverse.onrender.com/auth/upload/image", def);
       console.log("Save operation complete", response.data);
 
       navigate("/"); // Call the navigate function to go to the homepage
