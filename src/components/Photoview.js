@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import Nav from "./Nav";
-
+import Loading from "./Loading";
 const Photoview = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -43,6 +43,7 @@ const Photoview = () => {
 
   return (
     <div>
+      {loading && <div className="load"><Loading/></div>}
       <Nav />
       <div className="select">
         {loading ? (

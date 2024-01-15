@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import Loading from "./Loading";
 
 const Card = () => {
   const navigate = useNavigate();
 
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);  // Added loading state
   const [selectedImage, setSelectedImage] = useState(null);
 
   const getimage = async () => {
@@ -13,12 +15,13 @@ const Card = () => {
       const res = await axios.get('https://soalbackend.onrender.com/auth/getimage/image', {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
       setData(res.data);
+      setLoading(false);  // Set loading to false after data is fetched
     } catch (err) {
       console.log(err);
+      setLoading(false);  // Set loading to false in case of an error
     }
   };
 
@@ -33,7 +36,8 @@ const Card = () => {
 
   return (
     <>
-      {data.map((e) => (
+      {loading && <div className="load"><Loading/></div>} {/* Display loader while loading */}
+      {!loading && data.map((e) => (
         <div
           key={e.id}
           className="relative w-60 h-72 rounded-[40px] bg0 text-white py-5 px-5 overflow-hidden z-[9] card-hover"
