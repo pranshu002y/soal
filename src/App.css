@@ -12,6 +12,11 @@
   animation-delay: 2s;
 
 }
+.open:hover{
+  color: green;
+  background-color: white;
+  transition: 0.8s ease-in-out;
+}
 
 @keyframes fadeAnimation {
   0% {

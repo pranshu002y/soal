@@ -12,7 +12,6 @@ const Photoview = () => {
         const res = await axios.get('https://soalbackend.onrender.com/auth/getimage/image', {
           headers: {
             "Content-Type": "application/json",
-            
           },
         });
         setData(res.data);
@@ -26,9 +25,9 @@ const Photoview = () => {
     getimage();
   }, []);
 
-  const handleDownload = () => {
-    if (data.length > 0 && data[0].Image) {
-      const imageUrl = data[0].Image;
+  const handleDownload = (index) => {
+    if (data.length > 0 && data[index].Image) {
+      const imageUrl = data[index].Image;
 
       const anchor = document.createElement("a");
       anchor.href = imageUrl;
@@ -56,9 +55,10 @@ const Photoview = () => {
                   <img
                     src={e.Image}
                     alt="Card"
+                    onClick={() => handleDownload(index)}
                   />
                   <div className="card-content">
-                    <h2 onClick={handleDownload}>Click to Download Image</h2>
+                    <h2>Click to Download Image</h2>
                   </div>
                 </div>
               </main>
