@@ -58,7 +58,7 @@ const Photoview = () => {
                     onClick={() => handleDownload(index)}
                   />
                   <div className="card-content">
-                    <h2>Click to Download Image</h2>
+                    <h2>{e.company}</h2>
                   </div>
                 </div>
               </main>
