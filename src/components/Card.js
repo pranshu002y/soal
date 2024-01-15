@@ -9,7 +9,7 @@ const Card = () => {
 
   const getimage = async () => {
     try {
-      const res = await axios.get('http://localhost:5500/auth/getimage/image', {
+      const res = await axios.get('https://soalbackend.onrender.com/auth/getimage/image', {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
