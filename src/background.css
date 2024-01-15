@@ -54,3 +54,62 @@
     box-shadow: 0px 9px 30px rgba(255, 255, 255, 0.3);
     border-bottom: 2px red;
 }
+
+
+
+
+/* Small screens (phones) */
+@media only screen and (max-width: 600px) {
+    .nav-bar {
+        font-size: 10px;
+    }
+
+    .soal>span {
+        font-size: 10em;
+    }
+
+    /* Add more responsive styles for small screens */
+}
+
+/* Medium screens (tablets) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    /* Add more responsive styles for medium screens */
+    .nav-bar {
+        font-size: 16px;
+    }
+
+    .soal>span {
+        font-size: 15em;
+    }
+}
+
+
+@media only screen and (max-width: 400px) {
+    .nav-bar {
+        font-size: 8px;
+    }
+
+    .soal>span {
+        font-size: 8em;
+    }
+
+    /* Add more responsive styles for extra-small screens */
+}
+
+/* Very small screens (phones) */
+@media only screen and (max-width: 320px) {
+    .nav-bar {
+        font-size: 6px;
+    }
+    .foreground{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .soal>span {
+        font-size: 6em;
+    }
+
+    /* Add more responsive styles for very small screens */
+}
+
